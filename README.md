@@ -1,20 +1,20 @@
 django-smileys
 ==============
 
-Django-smilyes is a django application providing a method to put *smileys* in your content
+Django-smilyes is a django application providing a method to put *Smileys* in your content
 by simply adding a **tag_filter** in yours templates.
 
 Examples
 --------
 
-For our example we will make a template who display the field *content* of our
+For our example we will make a template who display the field **content* of our
 model with smileys integrated.
 
-We suppose that you have register the *smileys* app in your *INSTALLED_APPS* section.
+We suppose that you have register the **smileys** app in your *INSTALLED_APPS* section.
 
-   {% load smiley_tags %}
-
-   {{ object.content|smileys }}
+      {% load smiley_tags %}
+      
+      {{ object.content|smileys }}
 
 
 Easy, no ?
