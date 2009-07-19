@@ -36,7 +36,7 @@ The url where the smileys files are located, use this as default :
 
 The class wo will be applied to the *img* markup of the smileys.
 
-* SMILEY_LIST
+* SMILEYS_LIST
 
 The list of the smileys who will be converted. It's something like that :
 
@@ -48,7 +48,12 @@ The list of the smileys who will be converted. It's something like that :
      (':p', 'razz.gif'),
      (':P', 'razz.gif'),
      (':o', 'surprised.gif'),
-     (':O', 'surprised.gif'),)
+     (':O', 'surprised.gif'),
+     (':s', 'confused.gif'),
+     (':S', 'confused.gif'),
+     (':$', 'confused.gif'),
+     ('o_O', 'eek.gif'),
+     )
 
 Of course the package does not provide the smileys files, 
 is your job to find and set them in your project.
