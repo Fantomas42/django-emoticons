@@ -20,3 +20,4 @@ def replace_smileys(value):
     return value
 
 register.filter('smileys', replace_smileys)
+replace_smileys.is_safe = True
