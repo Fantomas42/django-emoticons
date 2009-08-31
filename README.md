@@ -1,7 +1,7 @@
 django-smileys
 ==============
 
-Django-smilyes is a django application providing a method to put *Smileys* in your content
+Django-smileys is a django application providing a method to put *Smileys* in your content
 by simply adding a **tag_filter** in yours templates.
 
 Examples
