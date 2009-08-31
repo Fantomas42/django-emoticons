@@ -14,8 +14,8 @@ register = template.Library()
 def replace_smileys(value):
     for pattern, image in SMILEYS_LIST:
         if pattern in value:
-            smiley_html = '<img class="%s" src="%s" />' % (SMILEYS_CLASS,
-                                                           join(SMILEYS_URL, image))
+            smiley_html = '<img class="%s" src="%s" alt="%s" />' % (
+                SMILEYS_CLASS, join(SMILEYS_URL, image), pattern)
             value = value.replace(pattern, smiley_html)
     return value
 
