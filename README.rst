@@ -1,16 +1,17 @@
 django-smileys
 ==============
 
-Django-smileys is a django application providing a method to put *Smileys* in your content
-by simply adding a **tag_filter** in yours templates.
+Django-smileys is a django application providing a method to put *smiley images* in your content
+by simply adding a **tag_filter** in yours templates. .. image:: http://fantomas.willbreak.it//img/smileys/mrgreen.gif
 
-Examples
---------
+.. contents::
 
-For our example we will make a template who display the field **content* of our
-model with smileys integrated.
+Example
+-------
 
-We suppose that you have register the **smileys** app in your *INSTALLED_APPS* section.
+For our example we will make a template who display the field **content** of our model with smileys integrated.
+
+Of course we suppose that you have register the **smileys** app in your *INSTALLED_APPS* section. ::
 
       {% load smiley_tags %}
       
@@ -28,7 +29,7 @@ You can use differents settings for customizing the application.
 
 * SMILEYS_URL
 
-The url where the smileys files are located, use this as default :
+The url where the smileys files are located, use this as default ::
 
     os.path.join(settings.MEDIA_URL, 'smileys/'))
 
@@ -38,7 +39,7 @@ The class wo will be applied to the *img* markup of the smileys.
 
 * SMILEYS_LIST
 
-The list of the smileys who will be converted. It's something like that :
+The list of the smileys who will be converted. It's something like that ::
 
     ((':)', 'smile.gif'),
      (':D', 'mrgreen.gif'),
