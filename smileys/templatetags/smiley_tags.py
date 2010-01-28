@@ -1,5 +1,6 @@
 """Template tags for smileys app"""
-from os.path import join
+import re
+import os
 
 from django import template
 from django.utils.safestring import mark_safe
@@ -11,17 +12,19 @@ from smileys.settings import SMILEYS_CLASS
 
 register = template.Library()
 
+RE_SMILEYS_LIST = [(re.compile(re.escape(smiley[0])), smiley[0], smiley[1])
+                   for smiley in SMILEYS_LIST]
+
 def replace_smileys(content, autoescape=None):
     esc = autoescape and conditional_escape or (lambda x: x)
 
-    for pattern, image in SMILEYS_LIST:
-        if pattern in content:
+    for smiley, name, image in RE_SMILEYS_LIST:
+        if smiley.search(content):
             smiley_html = '<img class="%s" src="%s" alt="%s" />' % (
-                SMILEYS_CLASS, join(SMILEYS_URL, image), pattern)
-            content = esc(content).replace(pattern, smiley_html)
+                SMILEYS_CLASS, os.path.join(SMILEYS_URL, image), name)
+            content = smiley.sub(smiley_html, esc(content))
     return mark_safe(content)
 replace_smileys.needs_autoescape = True
-
 
 class SmileyNode(template.Node):
     def __init__(self, nodelist):
