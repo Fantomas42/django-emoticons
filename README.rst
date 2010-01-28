@@ -9,9 +9,9 @@ Django-smileys is a django application providing utilities to add *smiley images
 Install
 =======
 
-Install the package in your *PYTHON_PATH* by getting the sources and run **setup.py** or use *easy_install* ::
+Install the package in your *PYTHON_PATH* by getting the sources and run **setup.py** or use *pip* ::
 
-  $> easy_install django-smileys
+  $> pip install -e git://github.com/Fantomas42/django-smileys.git#egg=django-smileys
 
 Then register the **smileys** app in your *INSTALLED_APPS* project's section.
 
