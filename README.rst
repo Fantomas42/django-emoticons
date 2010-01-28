@@ -1,27 +1,28 @@
-django-smileys
-==============
+========================
+django-smileys |mrgreen|
+========================
 
-Django-smileys is a django application providing a method to put *smiley images* in your content
-by simply adding a **tag_filter** in yours templates. |smiley|
+Django-smileys is a django application providing utilities to add *smiley images* in your templates.
 
 .. contents::
 
 Install
--------
+=======
 
-::
+Install the package in your *PYTHON_PATH* by getting the sources and run **setup.py** or use *easy_install* ::
 
   $> easy_install django-smileys
 
 Then register the **smileys** app in your *INSTALLED_APPS* project's section.
 
 
-Example
--------
+Examples
+========
 
-For our example we will make a template who display the field *content* of our model with smileys integrated.
+Filter Usage
+------------
 
-This field has this value : ::
+For our example we will make a template who display the field *content* of a model, this field has this value : ::
 
   Coding is fun and sexy :D
 
@@ -33,13 +34,26 @@ So in our templates we will load the **smiley_tags** library and use the **smile
 
 Which will render :
 
-  Coding is fun and sexy |big_smiley|
+  Coding is fun and sexy |smiley|
 
-Easy, no ?
-Of course you can use this filter anywhere you want in your template.
+Tag Usage
+---------
+
+The smileys app also provides a tag named **smileys** for converting raw text. ::
+
+  {% load smiley_tags %}                                                                                                                                                                 
+  {% smileys %}                                                                                                                                                                          
+  Documenting is boring but usefull :p
+  {% endsmileys %
+
+Which will render :
+
+  Documenting is boring but usefull |razz|
+
+Pretty easy, no ?
 
 Settings
---------
+========
 
 You can use differents settings for customizing the application.
 
@@ -72,9 +86,9 @@ The list of the smileys who will be converted. It's something like that ::
    ('o_O', 'eek.gif'),
    )
 
-Of course the package does not provide the images, 
-is your job to find and set them in your project.
+Of course the package does not provide the images, is your job to find and set them in your project.
 
-.. |smiley| image:: http://fantomas.willbreak.it//img/smileys/mrgreen.gif
-.. |big_smiley| image:: http://fantomas.willbreak.it//img/smileys/smile.gif
+.. |razz| image:: http://fantomas.willbreak.it//img/smileys/razz.gif
+.. |mrgreen| image:: http://fantomas.willbreak.it//img/smileys/mrgreen.gif
+.. |smiley| image:: http://fantomas.willbreak.it//img/smileys/smile.gif
 
