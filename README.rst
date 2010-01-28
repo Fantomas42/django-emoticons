@@ -34,7 +34,7 @@ So in our templates we will load the **smiley_tags** library and use the **smile
 
 Which will render :
 
-  Coding is fun and sexy |smiley|
+  Coding is fun and sexy |smile|
 
 Tag Usage
 ---------
@@ -44,7 +44,7 @@ The smileys app also provides a tag named **smileys** for converting raw text. :
   {% load smiley_tags %}                                                                                                                                                                 
   {% smileys %}                                                                                                                                                                          
   Documenting is boring but usefull :p
-  {% endsmileys %
+  {% endsmileys %}
 
 Which will render :
 
@@ -89,6 +89,5 @@ The list of the smileys who will be converted. It's something like that ::
 Of course the package does not provide the images, is your job to find and set them in your project.
 
 .. |razz| image:: http://fantomas.willbreak.it//img/smileys/razz.gif
+.. |smile| image:: http://fantomas.willbreak.it//img/smileys/smile.gif
 .. |mrgreen| image:: http://fantomas.willbreak.it//img/smileys/mrgreen.gif
-.. |smiley| image:: http://fantomas.willbreak.it//img/smileys/smile.gif
-
