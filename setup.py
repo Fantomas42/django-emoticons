@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from distutils.core import setup
 import os
 
 version = '0.1'
@@ -13,8 +13,9 @@ setup(name='django-smileys',
       author='Fantomas42',
       author_email='fantomas42@gmail.com',
       url='http://github.com/Fantomas42/django-smileys',
+      license='BSD License',
 
-      packages=['smileys'],
+      packages=['smileys', 'smileys.templatetags'],
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Web Environment',
@@ -23,9 +24,7 @@ setup(name='django-smileys',
           'Operating System :: OS Independent',
           'License :: OSI Approved :: BSD License',
           'Topic :: Software Development :: Libraries :: Python Modules',],
-            
-      license='BSD License',
-      include_package_data=True,
-      zip_safe=True,)
+      )
+
 
 
