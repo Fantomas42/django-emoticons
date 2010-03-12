@@ -1,10 +1,11 @@
 """Test for smileys app"""
-import unittest
+#import unittest
+from django.test import TestCase
 
 from django.template import Context, Template
 
 
-class SmileysTestCase(unittest.TestCase):
+class SmileysTestCase(TestCase):
 
     def test_filter(self):
         t = Template("""
