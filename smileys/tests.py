@@ -1,9 +1,6 @@
-"""Test for smileys app"""
-#import unittest
+"""Tests for smileys app"""
 from django.test import TestCase
-
 from django.template import Context, Template
-
 
 class SmileysTestCase(TestCase):
 
