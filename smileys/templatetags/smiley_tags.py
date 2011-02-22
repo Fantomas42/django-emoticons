@@ -18,12 +18,12 @@ RE_SMILEYS_LIST = [(re.compile(re.escape(smiley[0])), smiley[0], smiley[1])
 
 def replace_smileys(content, autoescape=None):
     esc = autoescape and conditional_escape or (lambda x: x)
-
+    content = esc(content)
     for smiley, name, image in RE_SMILEYS_LIST:
         if smiley.search(content):
             smiley_html = '<img class="%s" src="%s" alt="%s" />' % (
                 SMILEYS_CLASS, os.path.join(SMILEYS_URL, image), name)
-            content = smiley.sub(smiley_html, esc(content))
+            content = smiley.sub(smiley_html, content)
     return mark_safe(content)
 replace_smileys.needs_autoescape = True
 
