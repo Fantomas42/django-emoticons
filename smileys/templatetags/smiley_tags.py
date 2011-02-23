@@ -15,6 +15,7 @@ register = template.Library()
 RE_SMILEYS_LIST = [(re.compile(re.escape(smiley[0])), smiley[0], smiley[1])
                    for smiley in SMILEYS_LIST]
 
+
 def replace_smileys(content, autoescape=None):
     esc = autoescape and conditional_escape or (lambda x: x)
 
@@ -26,13 +27,15 @@ def replace_smileys(content, autoescape=None):
     return mark_safe(content)
 replace_smileys.needs_autoescape = True
 
+
 class SmileyNode(template.Node):
     def __init__(self, nodelist):
         self.nodelist = nodelist
-        
+
     def render(self, context):
         output = self.nodelist.render(context)
         return replace_smileys(output)
+
 
 def do_replace_smileys(parser, token):
     nodelist = parser.parse(('endsmileys',))
@@ -42,4 +45,3 @@ def do_replace_smileys(parser, token):
 
 register.tag('smileys', do_replace_smileys)
 register.filter('smileys', replace_smileys)
-

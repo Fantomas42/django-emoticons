@@ -5,7 +5,7 @@ version = '0.1'
 
 setup(name='django-smileys',
       version=version,
-      
+
       description='A usefull and incredible Django application that allow you to use smileys in your templates :)',
       long_description=open(os.path.join('README.rst')).read(),
       keywords='django, smiley',
@@ -25,6 +25,3 @@ setup(name='django-smileys',
           'License :: OSI Approved :: BSD License',
           'Topic :: Software Development :: Libraries :: Python Modules',],
       )
-
-
-
