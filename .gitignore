@@ -1,0 +1,15 @@
+*~
+*.pyc
+README.html
+TODO
+bin
+lib
+dist
+eggs
+parts
+build
+include
+downloads
+develop-eggs
+.installed.cfg
+django_smileys.egg-info
