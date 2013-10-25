@@ -1,6 +1,7 @@
 """Tests for smileys app"""
 from django.test import TestCase
-from django.template import Context, Template
+from django.template import Context
+from django.template import Template
 
 
 class SmileysTestCase(TestCase):
@@ -11,7 +12,7 @@ class SmileysTestCase(TestCase):
         {{ content|smileys }}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '\
+        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '
                           'src=\"smileys/smile.gif\" alt=\":)\" />.')
 
     def test_tag(self):
@@ -22,7 +23,7 @@ class SmileysTestCase(TestCase):
         {% endsmileys %}
         """)
         html = t.render(Context())
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '\
+        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '
                           'src=\"smileys/smile.gif\" alt=\":)\" />.')
 
     def test_tag_var(self):
@@ -33,7 +34,7 @@ class SmileysTestCase(TestCase):
         {% endsmileys %}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '\
+        self.assertEquals(html.strip(), 'Coding is fun <img class=\"smiley\" '
                           'src=\"smileys/smile.gif\" alt=\":)\" />.')
 
     def test_multiple(self):
@@ -44,8 +45,8 @@ class SmileysTestCase(TestCase):
         {% endsmileys %}
         """)
         html = t.render(Context({'content': ':) :p'}))
-        self.assertEquals(html.strip(), '<img class="smiley" '\
-                          'src="smileys/smile.gif" alt=":)" /> '\
-                          '<img class="smiley" src="smileys/razz.gif" '\
-                          'alt=":p" /> <img class="smiley" '\
+        self.assertEquals(html.strip(), '<img class="smiley" '
+                          'src="smileys/smile.gif" alt=":)" /> '
+                          '<img class="smiley" src="smileys/razz.gif" '
+                          'alt=":p" /> <img class="smiley" '
                           'src="smileys/smile.gif" alt=":)" />')
