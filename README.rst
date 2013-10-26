@@ -1,4 +1,4 @@
-========================
+B1;3201;0c========================
 django-smileys |mrgreen|
 ========================
 
@@ -62,36 +62,36 @@ So cool, no ?
 Settings
 ========
 
-You can use differents settings for customizing the application.
+You can use differents settings for customizing the application:
 
 * SMILEYS_URL
 
-The url where the smileys files are located, use this as default.::
+  The url where the smileys files are located, use this as default.::
 
-  os.path.join(settings.MEDIA_URL, 'smileys/'))
+    os.path.join(settings.MEDIA_URL, 'smileys/'))
 
 * SMILEYS_CLASS
 
-The class wo will be applied to the *img* markup of the smileys.
+  The class wo will be applied to the *img* markup of the smileys.
 
 * SMILEYS_LIST
 
-The list of the smileys who will be converted. It's something like that: ::
+  The list of the smileys who will be converted. It's something like that: ::
 
-  ((':)', 'smile.gif'),
-   (':D', 'mrgreen.gif'),
-   (':(', 'sad.gif'),
-   (':|', 'neutral.gif'),
-   (';)', 'wink.gif'),
-   (':p', 'razz.gif'),
-   (':P', 'razz.gif'),
-   (':o', 'surprised.gif'),
-   (':O', 'surprised.gif'),
-   (':s', 'confused.gif'),
-   (':S', 'confused.gif'),
-   (':$', 'confused.gif'),
-   ('o_O', 'eek.gif'),
-   )
+    ((':)', 'smile.gif'),
+     (':D', 'mrgreen.gif'),
+     (':(', 'sad.gif'),
+     (':|', 'neutral.gif'),
+     (';)', 'wink.gif'),
+     (':p', 'razz.gif'),
+     (':P', 'razz.gif'),
+     (':o', 'surprised.gif'),
+     (':O', 'surprised.gif'),
+     (':s', 'confused.gif'),
+     (':S', 'confused.gif'),
+     (':$', 'confused.gif'),
+     ('o_O', 'eek.gif'),
+     )
 
 Of course the package does not provide the images, is your job to find and
 set them in your project.
