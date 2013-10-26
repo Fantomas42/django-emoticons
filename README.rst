@@ -94,6 +94,6 @@ The list of the smileys who will be converted. It's something like that: ::
 Of course the package does not provide the images, is your job to find and
 set them in your project.
 
-.. |razz| image:: http://media.fache.fr/img/smileys/razz.gif
-.. |smile| image:: http://media.fache.fr/img/smileys/smile.gif
-.. |mrgreen| image:: http://media.fache.fr/img/smileys/mrgreen.gif
+.. |razz| image:: http://static.fache.fr/img/smileys/razz.gif
+.. |smile| image:: http://static.fache.fr/img/smileys/smile.gif
+.. |mrgreen| image:: http://static.fache.fr/img/smileys/mrgreen.gif
