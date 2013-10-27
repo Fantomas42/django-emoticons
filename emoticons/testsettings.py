@@ -1,8 +1,8 @@
-"""Settings for testing smileys"""
+"""Settings for testing emoticons"""
 
-DATABASES = {'default': {'NAME': 'smileys.db',
+DATABASES = {'default': {'NAME': 'emoticons.db',
                          'ENGINE': 'django.db.backends.sqlite3'}}
 
 SECRET_KEY = 'secret-key'
 
-INSTALLED_APPS = ['smileys']
+INSTALLED_APPS = ['emoticons']
