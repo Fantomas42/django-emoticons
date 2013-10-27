@@ -99,9 +99,9 @@ set them in your project.
 .. |razz| image:: http://static.fache.fr/img/smileys/razz.gif
 .. |smile| image:: http://static.fache.fr/img/smileys/smile.gif
 .. |mrgreen| image:: http://static.fache.fr/img/smileys/mrgreen.gif
-.. |travis-develop| image:: https://travis-ci.org/Fantomas42/django-smileys.png?branch=develop
+.. |travis-develop| image:: https://travis-ci.org/Fantomas42/django-emoticons.png?branch=develop
    :alt: Build Status - develop branch
-   :target: http://travis-ci.org/Fantomas42/django-smileys
-.. |coverage-develop| image:: https://coveralls.io/repos/Fantomas42/django-smileys/badge.png?branch=develop
+   :target: http://travis-ci.org/Fantomas42/django-emoticons
+.. |coverage-develop| image:: https://coveralls.io/repos/Fantomas42/django-emoticons/badge.png?branch=develop
    :alt: Coverage of the code
-   :target: https://coveralls.io/r/Fantomas42/django-smileys
+   :target: https://coveralls.io/r/Fantomas42/django-emoticons
