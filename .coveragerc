@@ -1,6 +1,6 @@
 [run]
-source		= smileys
-omit		= smileys/tests*
+source		= emoticons
+omit		= emoticons/tests*
 
 [report]
 exclude_lines	=
