@@ -1,27 +1,36 @@
-from distutils.core import setup
+"""Setup script for django-emoticons"""
 import os
 
-version = '0.1'
+from setuptools import setup
+from setuptools import find_packages
 
-setup(name='django-smileys',
-      version=version,
+import emoticons
 
-      description='A usefull and incredible Django application that allow you to use smileys in your templates :)',
-      long_description=open(os.path.join('README.rst')).read(),
-      keywords='django, smiley',
+setup(
+    name='django-emoticons',
+    version=emoticons.__version__,
 
-      author='Fantomas42',
-      author_email='fantomas42@gmail.com',
-      url='http://github.com/Fantomas42/django-smileys',
-      license='BSD License',
+    description=('A usefull and incredible Django application '
+                 'that allow you to use emoticons in your templates :)'),
+    long_description=open(os.path.join('README.rst')).read(),
+    keywords='django, emoticons, smiley',
 
-      packages=['smileys', 'smileys.templatetags'],
-      classifiers=[
-          'Development Status :: 4 - Beta',
-          'Environment :: Web Environment',
-          'Programming Language :: Python',
-          'Intended Audience :: Developers',
-          'Operating System :: OS Independent',
-          'License :: OSI Approved :: BSD License',
-          'Topic :: Software Development :: Libraries :: Python Modules',],
-      )
+    author=emoticons.__author__,
+    author_email=emoticons.__email__,
+    url=emoticons.__url__,
+
+    license=emoticons.__license__,
+
+    zip_safe=False,
+    packages=find_packages(),
+    classifiers=[
+        'Framework :: Django',
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Web Environment',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'License :: OSI Approved :: BSD License',
+        'Topic :: Software Development :: Libraries :: Python Modules'],
+)
