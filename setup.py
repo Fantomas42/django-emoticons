@@ -21,6 +21,7 @@ setup(
 
     license=emoticons.__license__,
 
+    zip_safe=False,
     packages=find_packages(),
     classifiers=[
         'Framework :: Django',
