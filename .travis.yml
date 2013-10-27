@@ -9,7 +9,7 @@ install:
     - python bootstrap.py
     - ./bin/buildout
 before_script:
-    - ./bin/flake8 smileys
+    - ./bin/flake8 emoticons
 script:
     - ./bin/test-and-cover
 after_success:
