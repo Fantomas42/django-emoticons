@@ -11,7 +11,7 @@ setup(
     version=emoticons.__version__,
 
     description=('A usefull and incredible Django application '
-                 'that allow you to use smileys in your templates :)'),
+                 'that allow you to use emoticons in your templates :)'),
     long_description=open(os.path.join('README.rst')).read(),
     keywords='django, emoticons, smiley',
 
