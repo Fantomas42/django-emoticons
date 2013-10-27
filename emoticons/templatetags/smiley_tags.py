@@ -12,8 +12,9 @@ from emoticons.settings import EMOTICONS_CLASS
 
 register = template.Library()
 
-RE_EMOTICONS_LIST = [(re.compile(re.escape(emoticon[0])), emoticon[0], emoticon[1])
-                   for emoticon in EMOTICONS_LIST]
+RE_EMOTICONS_LIST = [(re.compile(re.escape(emoticon[0])),
+                      emoticon[0], emoticon[1])
+                     for emoticon in EMOTICONS_LIST]
 
 
 def replace_emoticons(content, autoescape=None):

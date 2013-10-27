@@ -12,7 +12,8 @@ class SmileysTestCase(TestCase):
         {{ content|emoticons }}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"emoticon\" '
+        self.assertEquals(html.strip(),
+                          'Coding is fun <img class=\"emoticon\" '
                           'src=\"emoticons/smile.gif\" alt=\":)\" />.')
 
     def test_tag(self):
@@ -23,7 +24,8 @@ class SmileysTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context())
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"emoticon\" '
+        self.assertEquals(html.strip(),
+                          'Coding is fun <img class=\"emoticon\" '
                           'src=\"emoticons/smile.gif\" alt=\":)\" />.')
 
     def test_tag_var(self):
@@ -34,7 +36,8 @@ class SmileysTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(), 'Coding is fun <img class=\"emoticon\" '
+        self.assertEquals(html.strip(),
+                          'Coding is fun <img class=\"emoticon\" '
                           'src=\"emoticons/smile.gif\" alt=\":)\" />.')
 
     def test_multiple(self):
