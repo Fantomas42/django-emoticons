@@ -5,19 +5,15 @@ from os.path import join
 from django.conf import settings
 
 emoticons_default_list = (
+    (':(', 'sad.gif'),
+    (';)', 'wink.gif'),
+    ('o_O', 'eek.gif'),
     (':)', 'smile.gif'),
     (':D', 'mrgreen.gif'),
-    (':(', 'sad.gif'),
     (':|', 'neutral.gif'),
-    (';)', 'wink.gif'),
-    (':p', 'razz.gif'),
-    (':P', 'razz.gif'),
-    (':o', 'surprised.gif'),
-    (':O', 'surprised.gif'),
-    (':s', 'confused.gif'),
-    (':S', 'confused.gif'),
-    (':$', 'confused.gif'),
-    ('o_O', 'eek.gif'),
+    ((':p', ':P'), 'razz.gif'),
+    ((':s', ':s', ':$'), 'confused.gif'),
+    ((':o', ':O', ':0'), 'surprised.gif'),
 )
 
 
