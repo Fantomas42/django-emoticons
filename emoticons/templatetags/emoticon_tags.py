@@ -1,5 +1,4 @@
 """Template tags for emoticons app"""
-import re
 import os
 
 from django import template
@@ -7,22 +6,17 @@ from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 
 from emoticons.settings import EMOTICONS_URL
-from emoticons.settings import EMOTICONS_LIST
 from emoticons.settings import EMOTICONS_CLASS
+from emoticons.settings import EMOTICONS_REGEXP
 
 register = template.Library()
-
-RE_EMOTICONS_LIST = [
-    (re.compile(re.escape(emoticon[0])), emoticon[0], emoticon[1])
-    for emoticon in EMOTICONS_LIST
-]
 
 
 def replace_emoticons(content):
     """
     Replace the emoticons string by HTML images.
     """
-    for emoticon, name, image in RE_EMOTICONS_LIST:
+    for emoticon, name, image in EMOTICONS_REGEXP:
         if emoticon.search(content):
             emoticon_html = '<img class="%s" src="%s" alt="%s" />' % (
                 EMOTICONS_CLASS, os.path.join(EMOTICONS_URL, image), name)
