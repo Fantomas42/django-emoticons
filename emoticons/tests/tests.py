@@ -5,6 +5,16 @@ from django.template import Template
 
 
 class SmileysTestCase(TestCase):
+    expected_result = """
+    Coding is fun <img class="emoticon" src="emoticons/smile.gif" alt=":)" />.
+    """
+
+    def assertEmoticons(self, html1, html2=None):
+        if html2 is None:
+            html2 = self.expected_result
+        html1 = html1.strip()
+        html2 = html2.strip()
+        self.assertEquals(html1, html2)
 
     def test_filter(self):
         t = Template("""
@@ -12,9 +22,7 @@ class SmileysTestCase(TestCase):
         {{ content|emoticons }}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(),
-                          'Coding is fun <img class=\"emoticon\" '
-                          'src=\"emoticons/smile.gif\" alt=\":)\" />.')
+        self.assertEmoticons(html)
 
     def test_tag(self):
         t = Template("""
@@ -24,9 +32,7 @@ class SmileysTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context())
-        self.assertEquals(html.strip(),
-                          'Coding is fun <img class=\"emoticon\" '
-                          'src=\"emoticons/smile.gif\" alt=\":)\" />.')
+        self.assertEmoticons(html)
 
     def test_tag_var(self):
         t = Template("""
@@ -36,9 +42,7 @@ class SmileysTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEquals(html.strip(),
-                          'Coding is fun <img class=\"emoticon\" '
-                          'src=\"emoticons/smile.gif\" alt=\":)\" />.')
+        self.assertEmoticons(html)
 
     def test_multiple(self):
         t = Template("""
@@ -48,8 +52,8 @@ class SmileysTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'content': ':) :p'}))
-        self.assertEquals(html.strip(), '<img class="emoticon" '
-                          'src="emoticons/smile.gif" alt=":)" /> '
-                          '<img class="emoticon" src="emoticons/razz.gif" '
-                          'alt=":p" /> <img class="emoticon" '
-                          'src="emoticons/smile.gif" alt=":)" />')
+        self.assertEmoticons(
+            html,
+            '<img class="emoticon" src="emoticons/smile.gif" alt=":)" /> '
+            '<img class="emoticon" src="emoticons/razz.gif" alt=":p" /> '
+            '<img class="emoticon" src="emoticons/smile.gif" alt=":)" />')
