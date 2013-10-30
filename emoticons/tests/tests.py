@@ -4,9 +4,9 @@ from django.template import Context
 from django.template import Template
 
 
-class SmileysTestCase(TestCase):
+class EmoticonsTestCase(TestCase):
     expected_result = """
-    Coding is fun <img class="emoticon" src="emoticons/smile.gif" alt=":)" />.
+    Coding is fun <img class="emoticon" src="/emoticons/smile.gif" alt=":)" />.
     """
 
     def assertEmoticons(self, html1, html2=None):
@@ -54,6 +54,6 @@ class SmileysTestCase(TestCase):
         html = t.render(Context({'content': ':) :p'}))
         self.assertEmoticons(
             html,
-            '<img class="emoticon" src="emoticons/smile.gif" alt=":)" /> '
-            '<img class="emoticon" src="emoticons/razz.gif" alt=":p" /> '
-            '<img class="emoticon" src="emoticons/smile.gif" alt=":)" />')
+            '<img class="emoticon" src="/emoticons/smile.gif" alt=":)" /> '
+            '<img class="emoticon" src="/emoticons/razz.gif" alt=":p" /> '
+            '<img class="emoticon" src="/emoticons/smile.gif" alt=":)" />')
