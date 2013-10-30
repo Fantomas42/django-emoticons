@@ -1,7 +1,6 @@
 """Settings for emoticons app"""
 import re
 
-from os.path import join
 from django.conf import settings
 
 emoticons_default_list = (
@@ -39,7 +38,4 @@ EMOTICONS_LIST = getattr(settings, 'EMOTICONS_LIST',
 
 EMOTICONS_REGEXP = build_emoticons_regexp(EMOTICONS_LIST)
 
-EMOTICONS_URL = getattr(settings, 'EMOTICONS_URL',
-                        join(settings.MEDIA_URL, 'emoticons/'))
-
-EMOTICONS_CLASS = getattr(settings, 'EMOTICONS_CLASS', 'emoticon')
+EMOTICONS_DIRECTORY = getattr(settings, 'EMOTICONS_DIRECTORY', 'emoticons')
