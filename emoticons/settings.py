@@ -3,6 +3,13 @@ import re
 
 from django.conf import settings
 
+try:
+    unicode = unicode
+except NameError:
+    unicode = str
+    basestring = (str, bytes)
+
+
 emoticons_default_list = (
     (':(', 'sad.gif'),
     (';)', 'wink.gif'),
