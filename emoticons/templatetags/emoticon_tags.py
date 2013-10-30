@@ -6,6 +6,7 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 
+from emoticons.settings import EMOTICONS_LIST
 from emoticons.settings import EMOTICONS_REGEXP
 from emoticons.settings import EMOTICONS_DIRECTORY
 
@@ -59,3 +60,11 @@ def emoticons_filter(content, autoescape=None):
     esc = autoescape and conditional_escape or (lambda x: x)
     content = mark_safe(replace_emoticons(esc(content)))
     return content
+
+
+@register.inclusion_tag('emoticons/index.html')
+def emoticons_index():
+    """
+    Display an index of available emoticons.
+    """
+    return {'emoticons_list': zip(*EMOTICONS_LIST)[0]}
