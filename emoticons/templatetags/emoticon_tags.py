@@ -5,11 +5,12 @@ from django import template
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 
-from emoticons.settings import EMOTICONS_URL
-from emoticons.settings import EMOTICONS_CLASS
 from emoticons.settings import EMOTICONS_REGEXP
+from emoticons.settings import EMOTICONS_DIRECTORY
 
 register = template.Library()
+
+EMOTICON_TEMPLATE = template.loader.get_template('emoticons/emoticon.html')
 
 
 def replace_emoticons(content):
@@ -18,8 +19,10 @@ def replace_emoticons(content):
     """
     for emoticon, name, image in EMOTICONS_REGEXP:
         if emoticon.search(content):
-            emoticon_html = '<img class="%s" src="%s" alt="%s" />' % (
-                EMOTICONS_CLASS, os.path.join(EMOTICONS_URL, image), name)
+            context = template.Context({
+                'name': name,
+                'image': os.path.join(EMOTICONS_DIRECTORY, image)})
+            emoticon_html = EMOTICON_TEMPLATE.render(context).strip()
             content = emoticon.sub(emoticon_html, content)
     return content
 
