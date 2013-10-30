@@ -23,6 +23,19 @@ emoticons_default_list = (
 )
 
 
+def string_to_tuple(emoticons_list):
+    """
+    Fix list of emoticons with a single name
+    to a tuple for easier future iterations.
+    """
+    emoticons_tuple = []
+    for emoticons, image in emoticons_list:
+        if isinstance(emoticons, basestring):
+            emoticons = [emoticons]
+        emoticons_tuple.append((emoticons, image))
+    return emoticons_tuple
+
+
 def build_emoticons_regexp(emoticons_list):
     """
     Build a new list of emoticon tuples.
@@ -31,8 +44,6 @@ def build_emoticons_regexp(emoticons_list):
     """
     emoticons_regexp = []
     for emoticons, image in emoticons_list:
-        if isinstance(emoticons, basestring):
-            emoticons = [emoticons]
         for emoticon in emoticons:
             emoticons_regexp.append(
                 (re.compile(re.escape(emoticon)),
@@ -42,6 +53,8 @@ def build_emoticons_regexp(emoticons_list):
 
 EMOTICONS_LIST = getattr(settings, 'EMOTICONS_LIST',
                          emoticons_default_list)
+
+EMOTICONS_LIST = string_to_tuple(EMOTICONS_LIST)
 
 EMOTICONS_REGEXP = build_emoticons_regexp(EMOTICONS_LIST)
 
