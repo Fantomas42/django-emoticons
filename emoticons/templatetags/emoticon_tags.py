@@ -22,7 +22,7 @@ def replace_emoticons(content):
         if emoticon.search(content):
             context = template.Context({
                 'name': name,
-                'code': binascii.hexlify(name),
+                'code': binascii.hexlify(name.encode('utf-8')),
                 'image': os.path.join(EMOTICONS_DIRECTORY, image)})
             emoticon_html = EMOTICON_TEMPLATE.render(context).strip()
             content = emoticon.sub(emoticon_html, content)
