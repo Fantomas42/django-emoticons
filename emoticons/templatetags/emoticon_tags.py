@@ -1,5 +1,6 @@
 """Template tags for emoticons app"""
 import os
+import binascii
 
 from django import template
 from django.utils.safestring import mark_safe
@@ -21,7 +22,7 @@ def replace_emoticons(content):
         if emoticon.search(content):
             context = template.Context({
                 'name': name,
-                'code': name.encode('hex'),
+                'code': binascii.hexlify(name),
                 'image': os.path.join(EMOTICONS_DIRECTORY, image)})
             emoticon_html = EMOTICON_TEMPLATE.render(context).strip()
             content = emoticon.sub(emoticon_html, content)
