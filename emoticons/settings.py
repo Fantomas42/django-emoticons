@@ -5,7 +5,7 @@ from django.conf import settings
 
 try:
     unicode = unicode
-except NameError:
+except NameError:  # Python 3
     unicode = str
     basestring = (str, bytes)
 
