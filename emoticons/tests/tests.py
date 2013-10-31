@@ -58,6 +58,6 @@ class EmoticonsTestCase(TestCase):
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" /> '
             '<img class="emoticon emoticon-3a70" '
-            'src="/emoticons/razz.gif" alt=":p" /> '
+            'src="/emoticons/tongueout.gif" alt=":p" /> '
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" />')
