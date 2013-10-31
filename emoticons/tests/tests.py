@@ -3,6 +3,8 @@ from django.test import TestCase
 from django.template import Context
 from django.template import Template
 
+from emoticons.templatetags.emoticons_tags import emoticons_index
+
 
 class EmoticonsTestCase(TestCase):
     expected_result = (
@@ -61,3 +63,7 @@ class EmoticonsTestCase(TestCase):
             'src="/emoticons/tongueout.gif" alt=":p" /> '
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" />')
+
+    def test_index(self):
+        data = emoticons_index()
+        self.assertEquals(len(data['emoticons_list']), 84)
