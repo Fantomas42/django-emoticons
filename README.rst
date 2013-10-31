@@ -31,10 +31,10 @@ a model, this field has this value: ::
 
   Coding is fun and sexy :D
 
-So in our templates we will load the **emoticon_tags** library and use the
+So in our templates we will load the **emoticons_tags** library and use the
 **emoticons** filter: ::
 
-  {% load emoticon_tags %}
+  {% load emoticons_tags %}
 
   {{ object.content|emoticons }}
 
@@ -48,7 +48,7 @@ Tag Usage
 The emoticons app also provides a tag named **emoticons** for converting raw
 text. ::
 
-  {% load emoticon_tags %}
+  {% load emoticons_tags %}
   {% emoticons %}
   Documenting is boring but usefull :p
   {% endemoticons %}

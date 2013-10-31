@@ -19,7 +19,7 @@ class EmoticonsTestCase(TestCase):
 
     def test_filter(self):
         t = Template("""
-        {% load emoticon_tags %}
+        {% load emoticons_tags %}
         {{ content|emoticons }}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
@@ -27,7 +27,7 @@ class EmoticonsTestCase(TestCase):
 
     def test_tag(self):
         t = Template("""
-        {% load emoticon_tags %}
+        {% load emoticons_tags %}
         {% emoticons %}
         Coding is fun :).
         {% endemoticons %}
@@ -37,7 +37,7 @@ class EmoticonsTestCase(TestCase):
 
     def test_tag_var(self):
         t = Template("""
-        {% load emoticon_tags %}
+        {% load emoticons_tags %}
         {% emoticons %}
         {{ content }}
         {% endemoticons %}
@@ -47,7 +47,7 @@ class EmoticonsTestCase(TestCase):
 
     def test_multiple(self):
         t = Template("""
-        {% load emoticon_tags %}
+        {% load emoticons_tags %}
         {% emoticons %}
         {{ content }} :)
         {% endemoticons %}
