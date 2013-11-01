@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django-Emoticons</title>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
-
+    <style type="text/css">
+      body { background-color: #eee; }
+      .container .row div { background-color: white; }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -24,27 +27,32 @@
           <table class="table table-striped table-bordered table-condensed table-hover">
             <thead>
               <tr>
-                <th>
+                <th class="text-center">
                   Emoticon
                 </th>
                 <th>
                   Aliases
-                </td>
-              </th>
+                </th>
+              </tr>
             </thead>
             <tbody>
               {% for emoticons in emoticons_list %}
               <tr>
-                <td>
+                <td class="text-center">
                   {{ emoticons.0|emoticons }}
                 </td>
                 <td>
-                  {% for emoticon in emoticons %}<span>{{ emoticon }}</span> {% endfor %}
+                  {% for emoticon in emoticons %}<code>{{ emoticon }}</code> {% endfor %}
                 </td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
+          <footer>
+            <p class="text-right">
+              Demo made by <a href="https://github.com/Fantomas42">Fantomas42</a>.
+            </p>
+          </footer>
         </div>
       </div>
     </div>
