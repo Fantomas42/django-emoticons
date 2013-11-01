@@ -62,9 +62,9 @@ def emoticons_filter(content, autoescape=None):
     return content
 
 
-@register.inclusion_tag('emoticons/index.html')
+@register.assignment_tag
 def emoticons_index():
     """
-    Display an index of available emoticons.
+    Display an tuple of list of available emoticons.
     """
-    return {'emoticons_list': zip(*EMOTICONS_LIST)[0]}
+    return zip(*EMOTICONS_LIST)[0]
