@@ -20,7 +20,31 @@
           </h1>
           {% endemoticons %}
           <h2>Index of the emoticons</h2>
-          {% emoticons_index %}
+          {% emoticons_index as emoticons_list %}
+          <table class="table table-striped table-bordered table-condensed table-hover">
+            <thead>
+              <tr>
+                <th>
+                  Emoticon
+                </th>
+                <th>
+                  Aliases
+                </td>
+              </th>
+            </thead>
+            <tbody>
+              {% for emoticons in emoticons_list %}
+              <tr>
+                <td>
+                  {{ emoticons.0|emoticons }}
+                </td>
+                <td>
+                  {% for emoticon in emoticons %}<span>{{ emoticon }}</span> {% endfor %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
