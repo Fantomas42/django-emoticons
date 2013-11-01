@@ -65,5 +65,4 @@ class EmoticonsTestCase(TestCase):
             'src="/emoticons/smile.gif" alt=":)" />')
 
     def test_index(self):
-        data = emoticons_index()
-        self.assertEquals(len(data['emoticons_list']), 84)
+        self.assertEquals(len(emoticons_index()), 84)
