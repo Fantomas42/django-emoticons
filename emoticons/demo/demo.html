@@ -3,18 +3,26 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="author" content="Fantomas42">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django-Emoticons</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+
   </head>
   <body>
-    <h1>Django-Emoticons</h1>
-
-    {% emoticons %}
-    <p>Django-emoticons is a django application providing utilities to add
-      <em>emoticons</em> in your templates.</p>
-    <p>Incredible no ? :)</p>
-    {% endemoticons %}
-
-    <h2>Index of the emoticons</h2>
-    {% emoticons_index %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          {% emoticons %}
+          <h1>Django-Emoticons<br />
+            <small>A usefull and incredible Django application that allow
+              you to use <strong>emoticons</strong> in your templates :).</small>
+          </h1>
+          {% endemoticons %}
+          <h2>Index of the emoticons</h2>
+          {% emoticons_index %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>
