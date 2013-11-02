@@ -39,7 +39,7 @@
               {% for emoticons in emoticons_list %}
               <tr>
                 <td class="text-center">
-                  {{ emoticons.0|emoticons }}
+                  {{ emoticons.0|safe|emoticons }}
                 </td>
                 <td>
                   {% for emoticon in emoticons %}<code>{{ emoticon }}</code> {% endfor %}
