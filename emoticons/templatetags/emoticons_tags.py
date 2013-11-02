@@ -67,4 +67,4 @@ def emoticons_index():
     """
     Display an tuple of list of available emoticons.
     """
-    return zip(*EMOTICONS_LIST)[0]
+    return list(zip(*EMOTICONS_LIST))[0]
