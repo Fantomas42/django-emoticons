@@ -1,5 +1,7 @@
 """Settings for emoticons app"""
 import re
+import os
+import binascii
 
 from django.conf import settings
 
@@ -116,19 +118,24 @@ def cast_to_list(emoticons_list):
     return emoticons_tuple
 
 
-def build_emoticons_regexp(emoticons_list):
+def compile_emoticons(emoticons_list):
     """
-    Build a new list of emoticon tuples.
-    Each tuple contains a regexp of the emoticon,
-    the original name and the image associated.
+    Compile a new list of emoticon tuples.
+    Each tuple contains the name of the emoticon,
+    the image path concatened with EMOTICONS_DIRECTORY,
+    the hexadecimal code of the emoticon and a
+    compiled regular expression of the emoticon.
     """
-    emoticons_regexp = []
+    emoticons_compiled = []
     for emoticons, image in emoticons_list:
         for emoticon in emoticons:
-            emoticons_regexp.append(
-                (re.compile(re.escape(emoticon)),
-                 emoticon, image))
-    return emoticons_regexp
+            emoticons_compiled.append(
+                (emoticon,
+                 os.path.join(EMOTICONS_DIRECTORY, image),
+                 binascii.hexlify(emoticon.encode('utf-8')),
+                 re.compile(re.escape(emoticon)))
+            )
+    return emoticons_compiled
 
 
 EMOTICONS_LIST = getattr(settings, 'EMOTICONS_LIST',
@@ -136,6 +143,7 @@ EMOTICONS_LIST = getattr(settings, 'EMOTICONS_LIST',
 
 EMOTICONS_LIST = cast_to_list(EMOTICONS_LIST)
 
-EMOTICONS_REGEXP = build_emoticons_regexp(EMOTICONS_LIST)
+EMOTICONS_DIRECTORY = getattr(settings, 'EMOTICONS_DIRECTORY',
+                              'emoticons')
 
-EMOTICONS_DIRECTORY = getattr(settings, 'EMOTICONS_DIRECTORY', 'emoticons')
+EMOTICONS_COMPILED = compile_emoticons(EMOTICONS_LIST)
