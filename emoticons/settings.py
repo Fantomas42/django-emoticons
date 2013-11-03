@@ -1,9 +1,12 @@
 """Settings for emoticons app"""
-import re
 import os
+import re
 import binascii
 
 from django.conf import settings
+from django.template import Context
+from django.template.loader import get_template
+
 
 try:
     unicode = unicode
@@ -121,19 +124,19 @@ def cast_to_list(emoticons_list):
 def compile_emoticons(emoticons_list):
     """
     Compile a new list of emoticon tuples.
-    Each tuple contains the name of the emoticon,
-    the image path concatened with EMOTICONS_DIRECTORY,
-    the hexadecimal code of the emoticon and a
-    compiled regular expression of the emoticon.
+    Each tuple contains a compiled regular expression
+    of the emoticon, and the html version of the emoticon.
     """
     emoticons_compiled = []
     for emoticons, image in emoticons_list:
         for emoticon in emoticons:
+            context = Context({
+                'name': emoticon,
+                'image': os.path.join(EMOTICONS_DIRECTORY, image),
+                'code': binascii.hexlify(emoticon.encode('utf-8'))})
             emoticons_compiled.append(
-                (emoticon,
-                 os.path.join(EMOTICONS_DIRECTORY, image),
-                 binascii.hexlify(emoticon.encode('utf-8')),
-                 re.compile(re.escape(emoticon)))
+                (re.compile(re.escape(emoticon)),
+                 EMOTICON_TEMPLATE.render(context).strip())
             )
     return emoticons_compiled
 
@@ -145,5 +148,7 @@ EMOTICONS_LIST = cast_to_list(EMOTICONS_LIST)
 
 EMOTICONS_DIRECTORY = getattr(settings, 'EMOTICONS_DIRECTORY',
                               'emoticons')
+
+EMOTICON_TEMPLATE = get_template('emoticons/emoticon.html')
 
 EMOTICONS_COMPILED = compile_emoticons(EMOTICONS_LIST)

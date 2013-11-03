@@ -8,20 +8,13 @@ from emoticons.settings import EMOTICONS_COMPILED
 
 register = template.Library()
 
-EMOTICON_TEMPLATE = template.loader.get_template('emoticons/emoticon.html')
-
 
 def replace_emoticons(content):
     """
     Replace the emoticons string by HTML images.
     """
-    for name, image, hexa_name, emoticon in EMOTICONS_COMPILED:
+    for emoticon, emoticon_html in EMOTICONS_COMPILED:
         if emoticon.search(content):
-            context = template.Context({
-                'name': name,
-                'image': image,
-                'code': hexa_name})
-            emoticon_html = EMOTICON_TEMPLATE.render(context).strip()
             content = emoticon.sub(emoticon_html, content)
     return content
 
