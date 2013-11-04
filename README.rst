@@ -5,23 +5,24 @@ django-emoticons |mrgreen|
 |travis-develop| |coverage-develop|
 
 Django-emoticons is a django application providing utilities to add
-*emoticons* in your templates.
+*emoticons* in your templates. Pretty incredible no?
 
 .. contents::
 
 Install
 =======
 
-Install the package in your *PYTHON_PATH* by getting the sources and run
-**setup.py** or use *pip*::
+Once you have installed the package in your *PYTHON_PATH*, register the
+**emoticons** app in your *INSTALLED_APPS* project's section. ::
 
-  $ pip install -e git://github.com/Fantomas42/django-emoticons.git#egg=django-emoticons
+  INSTALLED_APPS = (
+    ...
+    'emoticons',
+    ...
+  )
 
-Then register the **emoticons** app in your *INSTALLED_APPS* project's
-section.
-
-Examples
-========
+Usage
+=====
 
 Filter Usage
 ------------
@@ -57,44 +58,40 @@ Which will render :
 
   Documenting is boring but usefull |razz|
 
-So cool, no ?
+Index
+-----
+
+If you want to retrieve a list of all availables emoticons you can use the
+**emoticons_index** tag. ::
+
+  {% load emoticons_tags %}
+  {% emoticons_index as emoticons_list %}
+  {% for emoticons in emoticons_list %}
+  <p>{{ emoticons.0|emoticons }}: {{ emoticons|join:" " }}</p>
+  {% endfor %}
 
 Settings
 ========
 
 You can use differents settings for customizing the application:
 
-* EMOTICONS_URL
+* EMOTICONS_DIRECTORY
 
-  The url where the emoticons files are located, use this as default.::
-
-    os.path.join(settings.MEDIA_URL, 'emoticons/'))
-
-* EMOTICONS_CLASS
-
-  The class wo will be applied to the *img* markup of the emoticons.
+  The directory where the emoticons files are located, use ``'emoticons'``
+  as default.
 
 * EMOTICONS_LIST
 
-  The list of the emoticons who will be converted. It's something like that: ::
+  The list of the emoticons used by the application, something like this: ::
 
-    ((':)', 'smile.gif'),
-     (':D', 'mrgreen.gif'),
-     (':(', 'sad.gif'),
-     (':|', 'neutral.gif'),
-     (';)', 'wink.gif'),
-     (':p', 'razz.gif'),
-     (':P', 'razz.gif'),
-     (':o', 'surprised.gif'),
-     (':O', 'surprised.gif'),
-     (':s', 'confused.gif'),
-     (':S', 'confused.gif'),
-     (':$', 'confused.gif'),
-     ('o_O', 'eek.gif'),
-     )
+    (('(devil)', 'devil.gif'),
+     ('(angel)', 'angel.gif'),
+     ((':)', ':-)', ':=)', '(smile)'), 'smile.gif'),
+     ((':(', ':-(', ':=(', '(sad)'), 'sadsmile.gif'),
+    )
 
-Of course the package does not provide the images, is your job to find and
-set them in your project.
+If the HTML code of the emoticons does not fit to your needs, you can
+override the ``'emoticons/emoticon.html'`` template to adjust it.
 
 .. |razz| image:: http://static.fache.fr/img/smileys/razz.gif
 .. |smile| image:: http://static.fache.fr/img/smileys/smile.gif
