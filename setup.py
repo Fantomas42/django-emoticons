@@ -22,7 +22,7 @@ setup(
     license=emoticons.__license__,
 
     zip_safe=False,
-    packages=find_packages(),
+    packages=find_packages(exclude=['emoticons.demo']),
     classifiers=[
         'Framework :: Django',
         'Development Status :: 5 - Production/Stable',

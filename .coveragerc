@@ -1,8 +1,9 @@
 [run]
-source		= emoticons
-omit		= emoticons/tests*
+source          = emoticons
+omit            = emoticons/tests*
+                  emoticons/demo/*
 
 [report]
-exclude_lines	=
+exclude_lines   =
     pragma: no cover
 show_missing    = True
