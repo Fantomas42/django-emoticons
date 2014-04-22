@@ -93,9 +93,9 @@ You can use differents settings for customizing the application:
 If the HTML code of the emoticons does not fit to your needs, you can
 override the ``'emoticons/emoticon.html'`` template to adjust it.
 
-.. |razz| image:: http://static.fache.fr/img/smileys/razz.gif
-.. |smile| image:: http://static.fache.fr/img/smileys/smile.gif
-.. |mrgreen| image:: http://static.fache.fr/img/smileys/mrgreen.gif
+.. |razz| image:: http://fantomas.willbreak.it/static/emoticons/tongueout.gif
+.. |smile| image:: http://fantomas.willbreak.it/static/emoticons/bigsmile.gif
+.. |mrgreen| image:: http://fantomas.willbreak.it/static/emoticons/cool.gif
 .. |travis-develop| image:: https://travis-ci.org/Fantomas42/django-emoticons.png?branch=develop
    :alt: Build Status - develop branch
    :target: http://travis-ci.org/Fantomas42/django-emoticons
