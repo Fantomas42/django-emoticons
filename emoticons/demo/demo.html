@@ -22,6 +22,20 @@
               you to use <strong>emoticons</strong> in your templates :).</small>
           </h1>
           {% endemoticons %}
+          <h2>Usage</h2>
+          <p>
+            Using the emoticons in templates is fairly simple, all depends if you need to apply
+            the transformations on raw text or on variables.
+          </p>
+          <pre>
+            {% verbatim %}
+            {% load emoticons_tags %}
+
+            {% emoticons %}
+            Coding is fun :)
+            {% endemoticons %}
+            {% endverbatim %}
+          </pre>
           <h2>Index of the emoticons</h2>
           {% emoticons_index as emoticons_list %}
           <table class="table table-striped table-bordered table-condensed table-hover">
