@@ -27,6 +27,22 @@ class EmoticonsTestCase(TestCase):
         html = t.render(Context({'content': 'Coding is fun :).'}))
         self.assertEmoticons(html)
 
+    def test_filter_exclude(self):
+        t = Template("""
+        {% load emoticons_tags %}
+        {{ content|emoticons:'a,b' }}
+        """)
+        html = t.render(Context({
+            'content': ('<p>Coding is fun :).</p>'
+                        '<b>Coding is fun :).</b>'
+                        '<a>Coding is fun :).</a>')}))
+        self.assertEmoticons(
+            html,
+            '<p>Coding is fun <img class="emoticon emoticon-3a29" '
+            'src="/emoticons/smile.gif" alt=":)" />.</p>'
+            '<b>Coding is fun :).</b>'
+            '<a>Coding is fun :).</a>')
+
     def test_tag(self):
         t = Template("""
         {% load emoticons_tags %}
@@ -36,6 +52,23 @@ class EmoticonsTestCase(TestCase):
         """)
         html = t.render(Context())
         self.assertEmoticons(html)
+
+    def test_tag_exclude(self):
+        t = Template("""
+        {% load emoticons_tags %}
+        {% emoticons 'a,b' %}
+        <p>Coding is fun :).</p>
+        <b>Coding is fun :).</b>
+        <a>Coding is fun :).</a>
+        {% endemoticons %}
+        """)
+        html = t.render(Context())
+        self.assertEmoticons(
+            html,
+            '<p>Coding is fun <img class="emoticon emoticon-3a29" '
+            'src="/emoticons/smile.gif" alt=":)" />.</p>'
+            '<b>Coding is fun :).</b>'
+            '<a>Coding is fun :).</a>')
 
     def test_tag_var(self):
         t = Template("""
