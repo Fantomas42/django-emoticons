@@ -30,7 +30,7 @@ class EmoticonsTestCase(TestCase):
     def test_filter_exclude(self):
         t = Template("""
         {% load emoticons_tags %}
-        {{ content|emoticons:'a,b' }}
+        {{ content|safe|emoticons:'a,b' }}
         """)
         html = t.render(Context({
             'content': ('<p>Coding is fun :).</p>'
