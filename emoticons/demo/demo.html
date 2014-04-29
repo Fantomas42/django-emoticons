@@ -47,6 +47,28 @@ Coding is fun :)
             <p>Coding is cool :D</p>
             {% endemoticons %}
           </blockquote>
+          <p>
+            You can also exclude the emoticon transformations on specific markups
+            if you are using HTML.
+          </p>
+          <pre>{% verbatim %}
+{% load emoticons_tags %}
+
+{% emoticons "h3" %}
+&lt;h3&gt;Coding is fun :)&lt;/h3&gt;
+&lt;p&gt;Coding is cool :D&lt;/p&gt;
+{% endemoticons %}
+
+{% endverbatim %}</pre>
+          <p>
+            The snippet will generate this output:
+          </p>
+          <blockquote>
+            {% emoticons "h3" %}
+            <h3>Coding is fun :)</h3>
+            <p>Coding is cool :D</p>
+            {% endemoticons %}
+          </blockquote>
           <h2>Index of the emoticons</h2>
           {% emoticons_index as emoticons_list %}
           <table class="table table-striped table-bordered table-condensed table-hover">
