@@ -38,8 +38,9 @@ class EmoticonsTestCase(TestCase):
                         '<a>Coding is fun :).</a>')}))
         self.assertEmoticons(
             html,
-            '<p>Coding is fun <img class="emoticon emoticon-3a29" '
-            'src="/emoticons/smile.gif" alt=":)" />.</p>'
+            '<p>Coding is fun <img alt=":)" '
+            'class="emoticon emoticon-3a29" '
+            'src="/emoticons/smile.gif"/>.</p>'
             '<b>Coding is fun :).</b>'
             '<a>Coding is fun :).</a>')
 
@@ -65,9 +66,10 @@ class EmoticonsTestCase(TestCase):
         html = t.render(Context())
         self.assertEmoticons(
             html,
-            '<p>Coding is fun <img class="emoticon emoticon-3a29" '
-            'src="/emoticons/smile.gif" alt=":)" />.</p>'
-            '<b>Coding is fun :).</b>'
+            '<p>Coding is fun <img alt=":)" '
+            'class="emoticon emoticon-3a29" '
+            'src="/emoticons/smile.gif"/>.</p>\n'
+            '<b>Coding is fun :).</b>\n'
             '<a>Coding is fun :).</a>')
 
     def test_tag_var(self):

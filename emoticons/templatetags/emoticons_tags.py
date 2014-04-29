@@ -1,4 +1,6 @@
 """Template tags for emoticons app"""
+from bs4 import BeautifulSoup
+
 from django import template
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
@@ -9,14 +11,36 @@ from emoticons.settings import EMOTICONS_COMPILED
 register = template.Library()
 
 
-def replace_emoticons(content, excluded_markups):
+def regexp_replace_emoticons(content):
     """
-    Replace the emoticons string by HTML images.
+    Replace the emoticons string by HTML images,
+    with regular expressions.
     """
     for emoticon, emoticon_html in EMOTICONS_COMPILED:
         if emoticon.search(content):
             content = emoticon.sub(emoticon_html, content)
     return content
+
+
+def replace_emoticons(content, excluded_markups):
+    """
+    Replace the emoticons string by HTML images.
+    If some markups should be excluded from replacement,
+    BeautifulSoup will be used.
+    """
+    if not excluded_markups:
+        return regexp_replace_emoticons(content)
+
+    excluded_markups = excluded_markups.split(',') + ['[document]']
+    soup = BeautifulSoup(content)
+
+    for content_string in soup.strings:
+        if content_string.parent.name in excluded_markups:
+            continue
+        content_string.replace_with(
+            BeautifulSoup(
+                regexp_replace_emoticons(content_string)))
+    return str(soup)
 
 
 class EmoticonNode(template.Node):
@@ -41,6 +65,8 @@ def emoticons_tag(parser, token):
     args = token.split_contents()
     if len(args) == 2:
         exclude = args[1]
+        if exclude[0] == exclude[-1] and exclude[0] in ("'", '"'):
+            exclude = exclude[1:-1]
     elif len(args) > 2:
         raise template.TemplateSyntaxError(
             'emoticons tag has only one optional argument')
