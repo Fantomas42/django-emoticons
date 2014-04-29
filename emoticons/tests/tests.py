@@ -2,6 +2,7 @@
 from django.test import TestCase
 from django.template import Context
 from django.template import Template
+from django.template import TemplateSyntaxError
 
 from emoticons.templatetags.emoticons_tags import emoticons_index
 
@@ -53,6 +54,15 @@ class EmoticonsTestCase(TestCase):
         """)
         html = t.render(Context())
         self.assertEmoticons(html)
+
+    def test_tag_invalid(self):
+        with self.assertRaises(TemplateSyntaxError):
+            Template("""
+            {% load emoticons_tags %}
+            {% emoticons to much args %}
+            Coding is fun :).
+            {% endemoticons %}
+            """)
 
     def test_tag_exclude(self):
         t = Template("""
