@@ -34,4 +34,5 @@ setup(
         'Operating System :: OS Independent',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries :: Python Modules'],
+    install_requires=['beautifulsoup4']
 )
