@@ -35,11 +35,10 @@ def replace_emoticons(content, excluded_markups):
     soup = BeautifulSoup(content)
 
     for content_string in soup.strings:
-        if content_string.parent.name in excluded_markups:
-            continue
-        content_string.replace_with(
-            BeautifulSoup(
-                regexp_replace_emoticons(content_string)))
+        if content_string.parent.name not in excluded_markups:
+            content_string.replace_with(
+                BeautifulSoup(
+                    regexp_replace_emoticons(content_string)))
     return str(soup)
 
 
@@ -50,10 +49,20 @@ class EmoticonNode(template.Node):
     def __init__(self, nodelist, exclude):
         self.nodelist = nodelist
         self.exclude = exclude
+        if exclude:
+            self.exclude_var = template.Variable(exclude)
 
     def render(self, context):
         content = self.nodelist.render(context)
-        return replace_emoticons(content, self.exclude)
+
+        exclude = self.exclude
+        if exclude:
+            if exclude[0] == exclude[-1] and exclude[0] in ("'", '"'):
+                exclude = exclude[1:-1]
+            else:
+                exclude = self.exclude_var.resolve(context)
+
+        return replace_emoticons(content, exclude)
 
 
 @register.tag('emoticons')
@@ -65,8 +74,6 @@ def emoticons_tag(parser, token):
     args = token.split_contents()
     if len(args) == 2:
         exclude = args[1]
-        if exclude[0] == exclude[-1] and exclude[0] in ("'", '"'):
-            exclude = exclude[1:-1]
     elif len(args) > 2:
         raise template.TemplateSyntaxError(
             'emoticons tag has only one optional argument')
