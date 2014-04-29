@@ -22,6 +22,53 @@
               you to use <strong>emoticons</strong> in your templates :).</small>
           </h1>
           {% endemoticons %}
+          <h2>Usage</h2>
+          <p>
+            Using the emoticons in templates is fairly simple, all depends if you need to apply
+            the transformations on raw text or on variables.
+          </p>
+          <pre>{% verbatim %}
+{% load emoticons_tags %}
+
+{% emoticons %}
+Coding is fun :)
+{% endemoticons %}
+
+{% with content="Coding is cool :D" %}
+{{ content|emoticons }}
+{% endwidth %}
+{% endverbatim %}</pre>
+          <p>
+            The snippet will generate this output:
+          </p>
+          <blockquote>
+            {% emoticons %}
+            <p>Coding is fun :)</p>
+            <p>Coding is cool :D</p>
+            {% endemoticons %}
+          </blockquote>
+          <p>
+            You can also exclude the emoticon transformations on specific markups
+            if you are using HTML.
+          </p>
+          <pre>{% verbatim %}
+{% load emoticons_tags %}
+
+{% emoticons "h3" %}
+&lt;h3&gt;Coding is fun :)&lt;/h3&gt;
+&lt;p&gt;Coding is cool :D&lt;/p&gt;
+{% endemoticons %}
+
+{% endverbatim %}</pre>
+          <p>
+            The snippet will generate this output:
+          </p>
+          <blockquote>
+            {% emoticons "h3" %}
+            <h3>Coding is fun :)</h3>
+            <p>Coding is cool :D</p>
+            {% endemoticons %}
+          </blockquote>
           <h2>Index of the emoticons</h2>
           {% emoticons_index as emoticons_list %}
           <table class="table table-striped table-bordered table-condensed table-hover">
