@@ -34,7 +34,7 @@ def replace_emoticons(content, excluded_markups):
     excluded_markups = excluded_markups.split(',') + ['[document]']
     soup = BeautifulSoup(content)
 
-    for content_string in soup.strings:
+    for content_string in list(soup.strings):
         if content_string.parent.name not in excluded_markups:
             content_string.replace_with(
                 BeautifulSoup(
