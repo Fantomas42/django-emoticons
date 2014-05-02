@@ -36,9 +36,10 @@ def replace_emoticons(content, excluded_markups):
 
     for content_string in list(soup.strings):
         if content_string.parent.name not in excluded_markups:
-            content_string.replace_with(
-                BeautifulSoup(
-                    regexp_replace_emoticons(content_string)))
+            replaced_content_string = regexp_replace_emoticons(content_string)
+            if content_string != replaced_content_string:
+                content_string.replace_with(
+                    BeautifulSoup(replaced_content_string))
     return str(soup)
 
 
