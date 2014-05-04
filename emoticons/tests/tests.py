@@ -118,6 +118,28 @@ class EmoticonsTestCase(TestCase):
             'src="/emoticons/smile.gif"/>.</b>\n'
             '<a>Coding is fun :).</a>')
 
+    def test_tag_exclude_with_inner_html(self):
+        expected_html = ('<p>Fini l\'epoque du <em>Ctrl+F5</em> toutes '
+                         'les 15 secondes. <img alt=":)" class="emoticon '
+                         'emoticon-3a29" src="/emoticons/smile.gif"/></p>')
+        t = Template("""
+        {% load emoticons_tags %}
+        {% emoticons "b" %}
+        <p>Fini l'epoque du <em>Ctrl+F5</em> toutes les 15 secondes. :)</p>
+        {% endemoticons %}
+        """)
+        self.assertEmoticons(t.render(Context()), expected_html)
+
+        t = Template("""
+        {% load emoticons_tags %}
+        {{ content|safe|emoticons:"b" }}
+        """)
+        self.assertEmoticons(t.render(
+            Context({'content': (
+                "<p>Fini l'epoque du <em>Ctrl+F5</em> "
+                "toutes les 15 secondes. :)</p>")})),
+            expected_html)
+
     def test_tag_var(self):
         t = Template("""
         {% load emoticons_tags %}
