@@ -13,10 +13,12 @@ Install
 =======
 
 Once you have installed the package in your *PYTHON_PATH*, register the
-**emoticons** app in your *INSTALLED_APPS* project's section. ::
+**emoticons** and **django.contrib.staticfiles** apps in your
+*INSTALLED_APPS* project's section. ::
 
   INSTALLED_APPS = (
     ...
+    'django.contrib.staticfiles',
     'emoticons',
     ...
   )
