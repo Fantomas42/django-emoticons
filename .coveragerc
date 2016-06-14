@@ -6,4 +6,5 @@ omit            = emoticons/tests*
 [report]
 exclude_lines   =
     pragma: no cover
+    Python 3
 show_missing    = True
