@@ -94,7 +94,7 @@ def emoticons_filter(content, exclude='', autoescape=None):
     return content
 
 
-@register.assignment_tag
+@register.simple_tag
 def emoticons_index():
     """
     Display an tuple of list of available emoticons.

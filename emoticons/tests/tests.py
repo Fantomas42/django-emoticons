@@ -4,8 +4,6 @@ from django.template import Context
 from django.template import Template
 from django.template import TemplateSyntaxError
 
-from emoticons.templatetags.emoticons_tags import emoticons_index
-
 
 class EmoticonsTestCase(TestCase):
     expected_result = (
@@ -167,5 +165,21 @@ class EmoticonsTestCase(TestCase):
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" />')
 
+    def test_index_assignment(self):
+        t = Template("""
+        {% load emoticons_tags %}
+        {% emoticons_index as index  %}
+        {{ index|length }}
+        """)
+        html = t.render(Context())
+        self.assertEmoticons(html, '84')
+
     def test_index(self):
-        self.assertEquals(len(emoticons_index()), 84)
+        t = Template("""
+        {% load emoticons_tags %}
+        {% emoticons_index %}
+        """)
+        html = t.render(Context())
+        self.assertTrue(
+            '([&#39;:)&#39;, &#39;:-)&#39;, &#39;:=)&#39;'
+            ', &#39;(smile)&#39;]' in html)

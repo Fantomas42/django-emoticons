@@ -4,7 +4,6 @@ import re
 import binascii
 
 from django.conf import settings
-from django.template import Context
 from django.template.loader import get_template
 
 
@@ -130,10 +129,10 @@ def compile_emoticons(emoticons_list):
     emoticons_compiled = []
     for emoticons, image in emoticons_list:
         for emoticon in emoticons:
-            context = Context({
+            context = {
                 'name': emoticon,
                 'image': os.path.join(EMOTICONS_DIRECTORY, image),
-                'code': binascii.hexlify(emoticon.encode('utf-8'))})
+                'code': binascii.hexlify(emoticon.encode('utf-8'))}
             emoticons_compiled.append(
                 (re.compile(re.escape(emoticon)),
                  EMOTICON_TEMPLATE.render(context).strip())

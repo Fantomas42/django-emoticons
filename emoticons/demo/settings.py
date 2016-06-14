@@ -4,7 +4,6 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 STATIC_URL = '/static/'
 
@@ -12,16 +11,15 @@ SECRET_KEY = 'secret-key'
 
 ROOT_URLCONF = 'emoticons.demo.urls'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [PROJECT_ROOT],
+        'APP_DIRS': True,
+    }
+]
 
-TEMPLATE_DIRS = (
-    PROJECT_ROOT,
-)
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'emoticons',
     'django.contrib.staticfiles'
-)
+]
