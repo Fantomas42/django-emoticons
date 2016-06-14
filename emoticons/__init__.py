@@ -1,5 +1,5 @@
 """django-emoticons"""
-__version__ = '1.1.2'
+__version__ = '1.2'
 __license__ = 'BSD License'
 
 __author__ = 'Fantomas42'
