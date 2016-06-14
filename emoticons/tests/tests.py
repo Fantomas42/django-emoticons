@@ -165,7 +165,7 @@ class EmoticonsTestCase(TestCase):
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" />')
 
-    def test_index(self):
+    def test_index_assignment(self):
         t = Template("""
         {% load emoticons_tags %}
         {% emoticons_index as index  %}
@@ -173,3 +173,13 @@ class EmoticonsTestCase(TestCase):
         """)
         html = t.render(Context())
         self.assertEmoticons(html, '84')
+
+    def test_index(self):
+        t = Template("""
+        {% load emoticons_tags %}
+        {% emoticons_index %}
+        """)
+        html = t.render(Context())
+        self.assertTrue(
+            '([&#39;:)&#39;, &#39;:-)&#39;, &#39;:=)&#39;'
+            ', &#39;(smile)&#39;]' in html)
