@@ -19,7 +19,7 @@ TEMPLATES = [
     }
 ]
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'emoticons',
     'django.contrib.staticfiles'
-)
+]
