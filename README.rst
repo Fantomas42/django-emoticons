@@ -60,6 +60,20 @@ Which will render :
 
   Documenting is boring but usefull |razz|
 
+Excluding content within specific markup:
+
+  {% load emoticons_tags %}
+  {% emoticons "h3" %}
+  <h3>Serious title :[</h3>
+  <p>Documenting is boring but usefull :p</p>
+  {% endemoticons %}
+
+Which will render :
+
+  <h3>Serious title :[</h3>
+  <p>Documenting is boring but usefull |razz|<∕p>
+
+
 Index
 -----
 
@@ -95,9 +109,9 @@ You can use differents settings for customizing the application:
 If the HTML code of the emoticons does not fit to your needs, you can
 override the ``'emoticons/emoticon.html'`` template to adjust it.
 
-.. |razz| image:: http://fantomas.willbreak.it/static/emoticons/tongueout.gif
-.. |smile| image:: http://fantomas.willbreak.it/static/emoticons/bigsmile.gif
-.. |mrgreen| image:: http://fantomas.willbreak.it/static/emoticons/cool.gif
+.. |razz| image:: https://blog.fantomas.site/static/emoticons/tongueout.gif
+.. |smile| image:: https://blog.fantomas.site/static/emoticons/bigsmile.gif
+.. |mrgreen| image:: https://blog.fantomas.site/static/emoticons/cool.gif
 .. |travis-develop| image:: https://travis-ci.org/Fantomas42/django-emoticons.png?branch=develop
    :alt: Build Status - develop branch
    :target: http://travis-ci.org/Fantomas42/django-emoticons
