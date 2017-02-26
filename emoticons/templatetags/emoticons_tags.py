@@ -2,11 +2,11 @@
 from bs4 import BeautifulSoup
 
 from django import template
-from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
 
-from emoticons.settings import EMOTICONS_LIST
 from emoticons.settings import EMOTICONS_COMPILED
+from emoticons.settings import EMOTICONS_LIST
 
 register = template.Library()
 

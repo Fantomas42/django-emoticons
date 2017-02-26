@@ -1,8 +1,8 @@
 """Tests for emoticons app"""
-from django.test import TestCase
 from django.template import Context
 from django.template import Template
 from django.template import TemplateSyntaxError
+from django.test import TestCase
 
 
 class EmoticonsTestCase(TestCase):
@@ -11,7 +11,7 @@ class EmoticonsTestCase(TestCase):
         'src="/emoticons/smile.gif" alt=":)" />.'
     )
 
-    def assertEmoticons(self, html1, html2=None):
+    def assert_emoticons(self, html1, html2=None):
         if html2 is None:
             html2 = self.expected_result
         html1 = html1.strip()
@@ -24,7 +24,7 @@ class EmoticonsTestCase(TestCase):
         {{ content|emoticons }}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEmoticons(html)
+        self.assert_emoticons(html)
 
     def test_filter_exclude(self):
         t = Template("""
@@ -35,7 +35,7 @@ class EmoticonsTestCase(TestCase):
             'content': ('<p>Coding is fun :).</p>'
                         '<b>Coding is fun :).</b>'
                         '<a>Coding is fun :).</a>')}))
-        self.assertEmoticons(
+        self.assert_emoticons(
             html,
             '<p>Coding is fun <img alt=":)" '
             'class="emoticon emoticon-3a29" '
@@ -51,7 +51,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context())
-        self.assertEmoticons(html)
+        self.assert_emoticons(html)
 
     def test_tag_invalid(self):
         with self.assertRaises(TemplateSyntaxError):
@@ -72,7 +72,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context())
-        self.assertEmoticons(
+        self.assert_emoticons(
             html,
             '<p>Coding is fun <img alt=":)" '
             'class="emoticon emoticon-3a29" '
@@ -90,7 +90,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context())
-        self.assertEmoticons(
+        self.assert_emoticons(
             html,
             '<p>Coding is fun <img alt=":)" '
             'class="emoticon emoticon-3a29" '
@@ -108,7 +108,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'exclude': 'p,a'}))
-        self.assertEmoticons(
+        self.assert_emoticons(
             html,
             '<p>Coding is fun :).</p>\n'
             '<b>Coding is fun <img alt=":)" '
@@ -126,13 +126,13 @@ class EmoticonsTestCase(TestCase):
         <p>Fini l'epoque du <em>Ctrl+F5</em> toutes les 15 secondes. :)</p>
         {% endemoticons %}
         """)
-        self.assertEmoticons(t.render(Context()), expected_html)
+        self.assert_emoticons(t.render(Context()), expected_html)
 
         t = Template("""
         {% load emoticons_tags %}
         {{ content|safe|emoticons:"b" }}
         """)
-        self.assertEmoticons(t.render(
+        self.assert_emoticons(t.render(
             Context({'content': (
                 "<p>Fini l'epoque du <em>Ctrl+F5</em> "
                 "toutes les 15 secondes. :)</p>")})),
@@ -146,7 +146,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'content': 'Coding is fun :).'}))
-        self.assertEmoticons(html)
+        self.assert_emoticons(html)
 
     def test_multiple(self):
         t = Template("""
@@ -156,7 +156,7 @@ class EmoticonsTestCase(TestCase):
         {% endemoticons %}
         """)
         html = t.render(Context({'content': ':) :p'}))
-        self.assertEmoticons(
+        self.assert_emoticons(
             html,
             '<img class="emoticon emoticon-3a29" '
             'src="/emoticons/smile.gif" alt=":)" /> '

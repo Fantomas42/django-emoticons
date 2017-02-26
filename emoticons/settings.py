@@ -1,7 +1,7 @@
 """Settings for emoticons app"""
+import binascii
 import os
 import re
-import binascii
 
 from django.conf import settings
 from django.template.loader import get_template
