@@ -60,7 +60,7 @@ Which will render :
 
   Documenting is boring but usefull |razz|
 
-Excluding content within specific markup:
+Excluding content within specific markup: ::
 
   {% load emoticons_tags %}
   {% emoticons "h3" %}
