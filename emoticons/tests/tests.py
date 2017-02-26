@@ -172,7 +172,7 @@ class EmoticonsTestCase(TestCase):
         {{ index|length }}
         """)
         html = t.render(Context())
-        self.assertEmoticons(html, '84')
+        self.assert_emoticons(html, '84')
 
     def test_index(self):
         t = Template("""
