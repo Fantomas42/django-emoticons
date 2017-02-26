@@ -70,8 +70,8 @@ Excluding content within specific markup: ::
 
 Which will render :
 
-  <h3>Serious title :[</h3>
-  <p>Documenting is boring but usefull |razz|<∕p>
+  Serious title :[
+  Documenting is boring but usefull |razz|
 
 
 Index
