@@ -1,14 +1,11 @@
 language: python
 python:
     - 2.7
-    - 3.4
     - 3.5
-env:
-    - DJANGO=1.9
 install:
     - pip install -U setuptools
     - python bootstrap.py
-    - ./bin/buildout versions:django=$DJANGO
+    - ./bin/buildout
 before_script:
     - ./bin/flake8 emoticons
 script:
